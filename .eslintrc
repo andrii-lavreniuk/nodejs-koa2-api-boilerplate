@@ -1,0 +1,41 @@
+{
+  "extends": "airbnb/base",
+  "plugins": [
+    "babel"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "comma-dangle": [2, "never"],
+    "no-param-reassign": [2, { "props": false }],
+    "max-len": [2, 120, 4, {"ignoreComments": true, "ignoreUrls": true, "ignorePattern": "^\\s*function\\s+(\\w+)?\\((.*)?\\)\\s+\\{"}],
+    "no-console": 0,
+    "spaced-comment": 0,
+    "no-multi-spaces": [2, { "exceptions": { "VariableDeclarator": true } }],
+    "key-spacing": 0,
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "no-shadow": [2, { "builtinGlobals": false, "hoist": "functions", "allow": ["resolve", "reject", "done", "cb", "err", "s3"] }],
+    "new-cap": [2, {"properties": false}],
+    "no-unused-expressions": [2, { "allowTernary": true }],
+    "consistent-return": [0, { "treatUndefinedAsUnspecified": true }],
+    "no-underscore-dangle": 0,
+    "generator-star-spacing": 0,
+    "arrow-parens": 0,
+    "babel/new-cap": 1,
+    "babel/array-bracket-spacing": 1,
+    "babel/object-curly-spacing": 0,
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 0,
+    "babel/no-await-in-loop": 1,
+    "babel/flow-object-type": 1
+  },
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "undefined": true,
+    "process": true,
+    "console": true
+  }
+}

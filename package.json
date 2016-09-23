@@ -1,0 +1,71 @@
+{
+  "name": "koa2-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "6.6.0",
+    "npm": "3.10.3"
+  },
+  "scripts": {
+    "start": "export NODE_CONFIG_DIR='./app/config' && ./node_modules/.bin/nodemon app/server.js --exec babel-node",
+    "build": "./node_modules/.bin/babel app -d dist",
+    "serve": "export NODE_CONFIG_DIR='./dist/config' && node dist/index.js",
+    "test": "export SUPPRESS_NO_CONFIG_WARNING=true && export NODE_CONFIG_DIR='./app/config' && ./node_modules/.bin/mocha --timeout 3000 --require ./test/mocha-babel",
+    "lint": "./node_modules/.bin/eslint .",
+    "docs": "echo Docs!",
+    "validate": "npm ls",
+    "check": "./node_modules/.bin/ncu",
+    "update": "./node_modules/.bin/ncu -u",
+    "postinstall": "npm run build && npm run docs",
+    "precommit": "npm run lint",
+    "prepush": "npm test"
+  },
+  "keywords": [
+    "koa2",
+    "api"
+  ],
+  "author": "Andrei Lavrenyuk",
+  "license": "ISC",
+  "dependencies": {
+    "app-utils": "git+https://workerco:3aXno3LwK6gnBcPyEdDrVgIaJ2phG9II@bitbucket.org/workerco/app-utils.git#master",
+    "babel-cli": "6.14.0",
+    "babel-core": "6.14.0",
+    "babel-plugin-transform-async-to-generator": "6.8.0",
+    "babel-preset-es2015-node5": "1.2.0",
+    "babel-preset-stage-3": "6.11.0",
+    "babel-register": "6.14.0",
+    "chai": "3.5.0",
+    "chai-http": "3.0.0",
+    "chai-json-schema": "1.3.0",
+    "chai-like": "0.1.10",
+    "chai-things": "0.2.0",
+    "config": "1.21.0",
+    "crypto-js": "3.1.6",
+    "debug": "2.2.0",
+    "koa": "2.0.0-alpha.7",
+    "koa-bodyparser": "2.2.0",
+    "koa-context-validator": "0.2.0",
+    "koa-convert": "1.2.0",
+    "koa-error": "2.1.0",
+    "koa-errorhandler": "0.1.1",
+    "koa-json": "2.0.2",
+    "koa-router": "7.0.1",
+    "mocha": "3.0.2",
+    "moment": "2.15.1",
+    "mongoose": "4.6.1",
+    "mw-authentication": "git+https://workerco:3aXno3LwK6gnBcPyEdDrVgIaJ2phG9II@bitbucket.org/workerco/mw-authentication.git#master",
+    "pm2": "2.0.15",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "6.1.2",
+    "eslint": "3.5.0",
+    "eslint-config-airbnb": "11.1.0",
+    "eslint-plugin-babel": "3.3.0",
+    "eslint-plugin-import": "1.15.0",
+    "husky": "0.11.8",
+    "nodemon": "1.10.2",
+    "npm-check-updates": "2.8.0"
+  }
+}
