@@ -3,14 +3,11 @@ import config from 'config';
 import mongoose from 'mongoose';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import User from '../app/models/user';
+import server from '../app/server';
 
 chai.use(chaiHttp);
 
 const expect = chai.expect;
-const host   = config.server.host;
-
-let newUser = {};
 
 if (!mongoose.connection.readyState) {
   mongoose.connect(config.mongo.hosts.join(','), config.mongo.options);
@@ -22,26 +19,35 @@ if (!mongoose.connection.readyState) {
 
 describe('Users', () => {
   it('Signup', async () => {
-    const response = await chai.request(host)
+    const response = await chai.request(server)
       .post('/api/v1/users/signup')
       .set('Content-Type', 'application/json')
       .send({
-        email: `andrei.lavrenyuk+goodweed_${Date.now()}@gmail.com`,
+        email: `test_user_${Date.now()}@gmail.com`,
         password: '123456',
-        username: `andrei-${Date.now()}`,
+        username: `tester-${Date.now()}`,
         name: 'John Doe'
       });
 
-    //noinspection BadExpressionStatementJS
-    expect(response.body.error).to.be.undefined;
+    expect(response.body.error).to.equal(undefined);
     expect(response.body.result).to.be.an('object');
-    // expect(response.body.result.user.picture).to.match(imageLinkRe);
-    // signupUserId = String(res.body.result.user._id);
-    newUser = response.body.result;
+  });
+  it.only('Signup Failed', async () => {
+    const response = await chai.request(server)
+      .post('/api/v1/users/signup')
+      .set('Content-Type', 'application/json')
+      .send({
+        email: `test_user_${Date.now()}@gmail.com`,
+        password: '123456'
+      });
+
+    expect(response.body.error).to.equal(true);
+    expect(response.body.code).to.equal(400);
   });
 });
 
 after(async () => {
-  const { result } = await User.remove({ _id: newUser._id });
-  console.log('res --> ', result);
+  Object.keys(mongoose.connection.collections).forEach(async (collection) => {
+    await mongoose.connection.collections[collection].remove();
+  });
 });

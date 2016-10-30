@@ -1,5 +1,5 @@
 
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3000;
 
 const S3 = {
   key   : '',
