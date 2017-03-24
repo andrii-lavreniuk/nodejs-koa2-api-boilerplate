@@ -28,7 +28,7 @@
   "author": "Andrei Lavrenyuk",
   "license": "ISC",
   "dependencies": {
-    "app-utils": "git+https://workerco:3aXno3LwK6gnBcPyEdDrVgIaJ2phG9II@bitbucket.org/workerco/app-utils.git#master",
+    "app-utils": "git+https://github.com/bagbee/nodejs-app-utils#master",
     "babel-cli": "6.18.0",
     "babel-core": "6.18.0",
     "babel-plugin-transform-async-to-generator": "6.16.0",
@@ -55,8 +55,8 @@
     "moment": "2.15.2",
     "mongoose": "4.6.5",
     "mongoose-beautiful-unique-validation": "5.1.1",
-    "mw-authentication": "git+https://workerco:3aXno3LwK6gnBcPyEdDrVgIaJ2phG9II@bitbucket.org/workerco/mw-authentication.git#v2.0",
-    "mw-pagination": "git+https://workerco:3aXno3LwK6gnBcPyEdDrVgIaJ2phG9II@bitbucket.org/workerco/mw-pagination.git#master",
+    "mw-authentication": "git+https://github.com/bagbee/mw-authentication.git#master",
+    "mw-pagination": "git+https://github.com/bagbee/mw-pagination.git#master",
     "pm2": "2.0.19",
     "underscore": "1.8.3"
   },
